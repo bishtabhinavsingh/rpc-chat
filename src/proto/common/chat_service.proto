@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package org.bt.rpc.chat;
+
+message ChatMessage {
+  string senderId = 1;
+  string timestamp = 2;
+  string messageText = 3;
+}
+
+service ChatService {
+
+  rpc JoinChat (ChatMessage) returns (ChatMessage);
+  rpc LeaveChat (ChatMessage) returns (ChatMessage);
+  rpc SendChatMessage (ChatMessage) returns (ChatMessage);
+  rpc ListActiveUsers (stream ChatMessage) returns (stream ChatMessage);
+
+}
